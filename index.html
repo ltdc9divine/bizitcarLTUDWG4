@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+    
+<header class="header">
+
+    <div id="menu-btn" class="fas fa-bars"></div>
+
+    <a href="#" class="logo"> <span>Bi</span>zit </a>
+
+    <nav class="navbar">
+        <a href="#home">home</a>
+        <a href="#vehicles">vehicles</a>
+        <a href="#services">services</a>
+        <a href="#reviews">reviews</a>
+        <a href="#contact">contact</a>
+    </nav>
+
+    <div id="login-btn">
+        <button class="btn" id="login-button">Login</button>
+        <button class="btn" id="logout-btn" style="display: none;">Logout</button>
+    </div>
+    
+    <div id="login-error" style="color: red;"></div> <!-- Error display area -->
+    
+    <script>
+        // Check if the user is logged in from localStorage
+        let loggedIn = localStorage.getItem('loggedIn') === 'true'; // Check login status
+
+        const loginBtn = document.getElementById('login-button'); // Update ID here
+        const logoutBtn = document.getElementById('logout-btn');
+    
+        // If already logged in, hide the login button and show the logout button
+        if (loggedIn) {
+            loginBtn.style.display = 'none';  // Hide login button
+            logoutBtn.style.display = 'inline';  // Show logout button
+        }
+    
+        // Logout
+        logoutBtn.onclick = () => {
+            localStorage.setItem('loggedIn', 'false');  // Update logout status
+            loginBtn.style.display = 'inline';  // Show login button again
+            logoutBtn.style.display = 'none';  // Hide logout button
+            alert('You have logged out.');
+        };
+    </script>
+    
+</header>
+    
+<div class="login-form-container">
+    <span id="close-login-form" class="fas fa-times"></span>
+    <form action="login.php" method="POST">
+        <h3>user login</h3>
+        <input type="text" name="username" placeholder="username" class="box" required>
+        <input type="password" name="password" placeholder="password" class="box" required>
+        <input type="submit" value="login" class="btn">
+        <p> don't have an account <a href="register.php">Create One</a></p>
+    </form>
+</div>
+
+
+<section class="home" id="home">
+
+    <h3 data-speed="-2" class="home-parallax">find your car</h3>
+
+    <img data-speed="5" class="home-parallax" src="images/home-img.png" alt="">
+
+    <a data-speed="7" href="#" class="btn home-parallax">explore cars</a>
+
+</section>
+
+<section class="icons-container">
+
+    <div class="icons">
+        <i class="fas fa-home"></i>
+        <div class="content">
+            <h3>150+</h3>
+            <p>branches</p>
+        </div>
+    </div>
+
+    <div class="icons">
+        <i class="fas fa-car"></i>
+        <div class="content">
+            <h3>4770+</h3>
+            <p>cars sold</p>
+        </div>
+    </div>
+
+    <div class="icons">
+        <i class="fas fa-users"></i>
+        <div class="content">
+            <h3>320+</h3>
+            <p>happy clients</p>
+        </div>
+    </div>
+
+    <div class="icons">
+        <i class="fas fa-car"></i>
+        <div class="content">
+            <h3>1500+</h3>
+            <p>new cars</p>
+        </div>
+    </div>
+
+</section>
+
+<section class="vehicles" id="vehicles">
+
+    <h1 class="heading"> Vehicles</span></h1>
+
+<div class="swiper vehicles-slider">
+    <div class="swiper-wrapper" id="vehicles-container">
+        <!-- Vehicle items will be added by JavaScript -->
+    </div>
+    <div class="swiper-pagination"></div>
+</div>
+
+<div id="schedule-modal" class="modal">
+    <div class="modal-content">
+        <span id="close-modal" class="close">&times;</span>
+        <h3>Schedule a Car Viewing</h3>
+        <form id="schedule-form">
+            <input type="text" id="name" placeholder="Full Name" required>
+            <input type="tel" id="phone" placeholder="Phone Number" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="text" id="car" placeholder="Car to Watch" readonly>
+            <input type="date" id="date" required>
+            <input type="time" id="time" required>
+            <button type="submit" class="btn">Submit</button>
+        </form>
+    </div>
+</div>
+
+<section class="services" id="services">
+
+    <h1 class="heading"> our <span>services</span> </h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <i class="fas fa-car"></i>
+            <h3>car selling</h3>
+            
+        </div>
+
+        <div class="box">
+            <i class="fas fa-tools"></i>
+            <h3>parts repair</h3>
+        </div>
+
+        <div class="box">
+            <i class="fas fa-car-crash"></i>
+            <h3>car insurance</h3>
+        </div>
+
+        <div class="box">
+            <i class="fas fa-car-battery"></i>
+            <h3>battery replacement</h3>
+        </div>
+
+        <div class="box">
+            <i class="fas fa-gas-pump"></i>
+            <h3>oil change</h3>
+        </div>
+
+        <div class="box">
+            <i class="fas fa-headset"></i>
+            <h3>24/7 support</h3>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="newsletter">
+    <h3>subscribe for latest updates</h3>
+    <form id="subscribe-form" action="" method="POST">
+        <input type="email" placeholder="enter your email" required>
+        <input type="submit" value="subscribe">
+    </form>
+</section>
+
+<script>
+    document.getElementById('subscribe-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission
+        alert('You have successfully subscribed for notifications'); // Show the popup message
+    });
+</script>
+
+<section class="reviews" id="reviews">
+
+    <h1 class="heading"> client's <span>review</span> </h1>
+
+    <div class="swiper review-slider">
+
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide box">
+                <img src="images/pic-1.jpg" alt="">
+                <div class="content">
+                    <p>Ngon bổ rẻ, 10đ.</p>
+                    <h3>Lê Thành Đạt</h3>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide box">
+                <img src="images/pic-2.jpg" alt="">
+                <div class="content">
+                    <p>Đỉnh nóc kịch trần.</p>
+                    <h3>Vũ Hoàng Thanh Vy</h3>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide box">
+                <img src="images/pic-3.jpg" alt="">
+                <div class="content">
+                    <p>Hết nước chấm.</p>
+                    <h3>Thạch Minh Khang</h3>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+</section>
+
+<section class="contact" id="contact">
+    <h1 class="heading"><span>contact</span> us</h1>
+    <div class="row">
+        <form id="contact-form" action="contact.php" method="POST">
+            <h3>get in touch</h3>
+            <input type="text" name="name" placeholder="your name" class="box" required>
+            <input type="email" name="email" placeholder="your email" class="box" required>
+            <input type="text" name="subject" placeholder="subject" class="box" required>
+            <textarea name="message" placeholder="your message" class="box" cols="30" rows="10" required></textarea>
+            <input type="submit" value="send message" class="btn">
+        </form>
+    </div>
+</section>
+
+<section class="footer" id="footer">
+
+    <div class="box-container">
+
+        <div class="box">
+            <h3>our branches</h3>
+            <a href="#"> <i class="fas fa-map-marker-alt"></i> Da Nang </a>
+            <a href="#"> <i class="fas fa-map-marker-alt"></i> Ha Tinh </a>
+            <a href="#"> <i class="fas fa-map-marker-alt"></i> Ninh Binh </a>
+            <a href="#"> <i class="fas fa-map-marker-alt"></i> Hanoi </a>
+            <a href="#"> <i class="fas fa-map-marker-alt"></i> Long An </a>
+            <a href="#"> <i class="fas fa-map-marker-alt"></i> Ho Chi Minh City </a>
+        </div>
+
+        <div class="box">
+            <h3>quick links</h3>
+            <a href="#"> <i class="fas fa-arrow-right"></i> home </a>
+            <a href="#"> <i class="fas fa-arrow-right"></i> vehicles </a>
+            <a href="#"> <i class="fas fa-arrow-right"></i> services </ a>
+            <a href="#"> <i class="fas fa-arrow-right"></i> featured </a>
+            <a href="#"> <i class="fas fa-arrow-right"></i> reviews </a>
+            <a href="#"> <i class="fas fa-arrow-right"></i> contact </a>
+        </div>
+
+        <div class="box">
+            <h3>contact info</h3>
+            <a href="#"> <i class="fas fa-phone"></i> +84 582717657 </a>
+            <a href="#"> <i class="fas fa-phone"></i> +84 866482547 </a>
+            <a href="#"> <i class="fas fa-map-marker-alt"></i> Ho Chi Minh City - Vietnam - 100000 </a>
+        </div>
+
+        <div class="box">
+            <h3>social media</h3>
+            <a href="https://www.facebook.com/bii285/"> <i class="fab fa-facebook-f"></i> facebook </a>
+            <a href="https://www.instagram.com/lt_dat916/"> <i class="fab fa-instagram"></i> instagram </a>
+        </div>
+
+    </div>
+
+    <div class="credit"> created by <a>GROUP 4 - LẬP TRÌNH ỨNG DỤNG WEB</a> | all rights reserved </div>
+
+</section>
+
+<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>
